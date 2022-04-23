@@ -1,0 +1,58 @@
+<app-usuario></app-usuario>
+
+<mat-form-field appearance="outline" class="busqueda">
+    <mat-label>Buscar</mat-label>
+    <input matInput type="search" [(ngModel)]="busqueda" (keyup)="buscar(busqueda)">
+    <mat-icon matSuffix>search</mat-icon>
+    <mat-hint>Evidencia por nombre</mat-hint>
+</mat-form-field>
+
+<div class="opciones">
+    <mat-checkbox color="primary">Marcar Todo</mat-checkbox>
+    <mat-divider [vertical]="true"></mat-divider>
+    <mat-button-toggle>
+        fecha creacion
+        <mat-icon matSuffix>arrow_drop_down</mat-icon>
+    </mat-button-toggle>
+
+</div>
+
+
+<div *ngFor="let evidencia of lista_evidencias" class="contenedor_evidencia">
+    <mat-checkbox color="primary"></mat-checkbox>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha Creado</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+
+        <tr>
+            <td>{{evidencia.nombre_evidencia}}</td>
+            
+            <td>
+                <mat-chip-list aria-label="Fecha">
+                    <mat-chip color="warn" selected>{{transformarFecha(evidencia.fecha_creacion)}}</mat-chip>
+                </mat-chip-list>
+            </td>
+            
+            <td>
+                <mat-chip-list aria-label="Tipo">
+                    <mat-chip color="primary" selected>{{evidencia.tipo_evidencia}}</mat-chip>
+                </mat-chip-list>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+<div class="acciones">
+    <button mat-raised-button color="primary" class="editar" disabled>Editar</button>
+    <button mat-raised-button color="primary">Nueva Evidencia</button>
+</div>
+
+<div class="espacio"></div>
+
+<app-menu-navegacion></app-menu-navegacion>

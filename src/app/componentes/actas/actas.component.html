@@ -1,0 +1,53 @@
+<h2 class="titulo">Actas de Coordinación</h2>
+  
+<div class="linea"></div>
+
+<div class="espacio"></div>
+
+<div class="contenedor_asignatura">
+    <mat-form-field appearance="outline" class="contenedor_campo">
+      <mat-label>Asignatura</mat-label>
+      <mat-select [(ngModel)]="asignatura">
+        <mat-option *ngFor="let asignatura of asignaturas" value="asignatura">{{asignatura}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="contenedor_tipo">
+    <mat-form-field appearance="outline" class="contenedor_campo">
+        <mat-label>Tipo</mat-label>
+        <input matInput value="Actas" [(ngModel)]="tipo">
+    </mat-form-field>
+  </div>
+
+  <div class="contenedor_titulo">
+    <mat-form-field appearance="outline" class="contenedor_campo">
+        <mat-label>Titulo Acta</mat-label>
+        <input matInput [(ngModel)]="titulo">
+    </mat-form-field>
+  </div>
+
+  <div class="contenedor_subTitulo">
+    <mat-form-field appearance="outline" class="contenedor_campo">
+        <mat-label>Subtitulo Acta</mat-label>
+        <input matInput [(ngModel)]="subtitulo">
+    </mat-form-field>
+  </div>
+
+  <div class="contenedor_fecha">
+    <mat-form-field appearance="outline" class="contenedor_campo">
+        <mat-label>Fecha</mat-label>
+        <input matInput value="{{fecha | date: 'dd/MM/yyyy'}}">
+    </mat-form-field>
+  </div>
+
+  <div class="contenedor_hora">
+    <mat-form-field appearance="outline" class="contenedor_campo">
+        <mat-label>Hora</mat-label>
+        <input matInput value="{{fecha | date: 'hh:mm a'}}">
+    </mat-form-field>
+  </div>
+
+  <div class="contenedor_boton">
+    <button class="boton_acta" mat-raised-button color="primary">Generar Acta</button>
+  </div>

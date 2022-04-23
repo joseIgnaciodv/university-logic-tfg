@@ -1,0 +1,43 @@
+<div class="contenedor_usuario">
+    <mat-chip-list aria-label="Usuario" class="nombre_usuario">
+        <mat-chip selected>Jose Ignacio Del Valle Bustillo</mat-chip>
+      </mat-chip-list>
+    <button mat-mini-fab class="icono_usuario" color="default">
+        <mat-icon>person</mat-icon>
+    </button>
+</div>
+
+<div class="acciones_clase">
+    <h2 class="titulo">Mis Clases</h2>
+    <div class="accion_editar">
+        <button mat-mini-fab color="primary">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+    
+    <div class="accion_aniadir">
+        <button mat-mini-fab color="primary">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>
+
+<div class="linea">
+</div>
+
+<div class="clase" *ngFor="let clase of mis_clases" matRipple centered="True" (click)="ver_evidencias(clase.nombre_asignatura)">
+    <div class="nombre_clase">
+        <span>{{clase.nombre_asignatura}}</span>
+    </div>
+    <div class="contenedor_imagen">
+        <img class="imagen_clase" src="assets/images/graduate-cap.png" alt="Graduation Cap">
+    </div>
+</div>
+
+<div class="espacio"></div>
+
+<div *ngIf="cargador.estaCargando | async" class="cargando">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+
+<app-menu-navegacion></app-menu-navegacion>

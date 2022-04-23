@@ -1,0 +1,66 @@
+<div class="cabecera">
+  <div class="nombre_usuario">
+      <input type="text" id="usuario" class="usuario" value="Jose Ignacio Del Valle Bustillo">
+  </div>
+  <button mat-mini-fab class="icono_usuario" color="default">
+      <mat-icon>person</mat-icon>
+  </button>
+</div>
+
+<div class="espacio"></div>
+
+<input  id="asignatura" class="asignatura" type="text" value="Interfaces de Usuario">
+
+<div class="linea"></div>
+
+<div class="espacio"></div>
+
+<div class="contenedor_profesor">
+  <mat-form-field appearance="outline" class="contenedor_campo">
+    <mat-label>Profesor</mat-label>
+    <input matInput disabled value="{{profesor}}">
+  </mat-form-field>
+</div>
+
+<div class="contenedor_asignatura">
+  <mat-form-field appearance="outline" class="contenedor_campo">
+    <mat-label>Asignatura</mat-label>
+    <input matInput disabled value="{{asignatura}}">
+  </mat-form-field>
+</div>
+
+<div class="contenedor_tipo">
+  <mat-form-field appearance="outline" class="contenedor_campo">
+    <mat-label>Tipo de Evidencia</mat-label>
+    <mat-select [(ngModel)]="tipo" (keyup)="validar_evidencia()">
+      <mat-option *ngFor="let tipo of evidencias" value="{{tipo}}">{{tipo}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="contenedor_nombre">
+  <mat-form-field appearance="outline" class="contenedor_campo">
+    <mat-label>Nombre Evidencia</mat-label>
+    <input matInput [(ngModel)]="nombre" (keyup)="validar_evidencia()">
+  </mat-form-field>
+</div>
+
+<div class="contenedor_archivos">
+  <mat-form-field appearance="outline" class="contenedor_campo">
+    <mat-label>Tipo de Archivo</mat-label>
+    <mat-select [(ngModel)]="fichero" multiple (keyup)="validar_evidencia()">
+      <mat-option *ngFor="let ext of archivos" value="ext">{{ext}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="contenedor_descripcion">
+  <mat-form-field appearance="outline" class="contenedor_campo">
+    <mat-label>Descripcion</mat-label>
+    <textarea matInput placeholder="Descripcion Evidencia ..." [(ngModel)]="descripcion" (keyup)="validar_evidencia()"></textarea>
+  </mat-form-field>
+</div>
+
+
+
+<button class="boton_evidencia" mat-raised-button color="primary" (click)="set_evidencia()" [disabled]="completo">Crear Evidencia</button>

@@ -1,0 +1,40 @@
+<div class="vista_login">
+    <div class="imagen_inicio">
+        <img src="assets/images/uem.svg" alt="">
+    </div>
+    
+    <div class="campo">
+        <mat-form-field appearance="outline" class="contenedor_campo">
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-label>Nombre Usuario</mat-label>
+            <input matInput type="email" value="{{correo}}">
+        </mat-form-field>
+    </div>
+    
+    <div class="campo">
+        <mat-form-field appearance="outline" class="contenedor_campo">
+            <mat-icon matPrefix>lock</mat-icon>
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" value="{{password}}">
+        </mat-form-field>
+    </div>
+    
+    <div class="contendor_boton">
+        <button mat-raised-button color="primary" class="boton">Login</button>
+    </div>
+    
+    <div class="separador">
+        <hr class="linea">
+        <mat-icon>arrow_drop_down</mat-icon>
+        <hr class="linea">
+    </div>
+    
+    <div class="microsoft_login" matRipple centered="True" (click)="sign_in()">
+        <div class="microsoft_logo">
+            <img src="assets/images/ms.svg" alt="">
+        </div>
+        <div class="texto_microsoft">
+            <span class="texto">Iniciar Sesión</span>
+        </div>
+    </div>
+</div>
