@@ -1,3 +1,11 @@
+<div class="barra_movil"></div>
+
+<div class="cabecera">
+  <button id="volver" mat-fab color="primary" (click)="volver_atras()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</div>
+
 <h2 class="titulo">Actas de Coordinación</h2>
   
 <div class="linea"></div>
@@ -16,7 +24,7 @@
   <div class="contenedor_tipo">
     <mat-form-field appearance="outline" class="contenedor_campo">
         <mat-label>Tipo</mat-label>
-        <input matInput value="Actas" [(ngModel)]="tipo">
+        <input matInput disabled value="{{tipo}}">
     </mat-form-field>
   </div>
 

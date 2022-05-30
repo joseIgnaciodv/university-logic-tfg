@@ -20,6 +20,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatExpansionModule} from '@angular/material/expansion';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 registerLocaleData(localeEs, 'es')
 
@@ -34,12 +36,14 @@ import { EvidenciasVaciaComponent } from './componentes/evidencias-vacia/evidenc
 import { EvidenciasAsignaturaComponent } from './componentes/evidencias-asignatura/evidencias-asignatura.component';
 import { InterceptorService } from './servicios/interceptor.service';
 import { NuevaEvidenciaComponent } from './componentes/nueva-evidencia/nueva-evidencia.component';
-import { UsuarioComponent } from './componentes/usuario/usuario.component';
 import { NavegacionCoordinadorComponent } from './componentes/navegacion-coordinador/navegacion-coordinador.component';
 import { EvidenciasCoordinacionComponent } from './componentes/evidencias-coordinacion/evidencias-coordinacion.component';
 import { EstadisticasComponent } from './componentes/estadisticas/estadisticas.component';
 import { ActasComponent } from './componentes/actas/actas.component';
 import { InformesComponent } from './componentes/informes/informes.component';
+import { NavAdminComponent } from './componentes/nav-admin/nav-admin.component';
+import { AdminAsignaturasComponent } from './componentes/admin-asignaturas/admin-asignaturas.component';
+import { AdminUsuariosComponent } from './componentes/admin-usuarios/admin-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -50,12 +54,14 @@ import { InformesComponent } from './componentes/informes/informes.component';
     EvidenciasVaciaComponent,
     EvidenciasAsignaturaComponent,
     NuevaEvidenciaComponent,
-    UsuarioComponent,
     NavegacionCoordinadorComponent,
     EvidenciasCoordinacionComponent,
     EstadisticasComponent,
     ActasComponent,
-    InformesComponent
+    InformesComponent,
+    NavAdminComponent,
+    AdminAsignaturasComponent,
+    AdminUsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +85,9 @@ import { InformesComponent } from './componentes/informes/informes.component';
     MatCheckboxModule,
     MatDividerModule,
     MatButtonToggleModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatAutocompleteModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},

@@ -1,7 +1,7 @@
 @media only screen and (max-width: 600px){
     .menu_navegacion{
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         background-color: #3F51B5;
         position: fixed;
         bottom: 0;
@@ -13,8 +13,11 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        & button{
+            margin: auto;
+        }
         & .texto_icono{
-            margin-bottom: 20%;
+            margin-bottom: 10%;
             font-size: 14px;
             color: lightgrey;
         }

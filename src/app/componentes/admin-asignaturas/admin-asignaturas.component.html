@@ -1,0 +1,15 @@
+<div class="barra_movil"></div>
+
+<button mat-raised-button color="primary" (click)="subir_titulaciones()">
+    <mat-icon>add</mat-icon>
+    Asignación Docente
+</button>
+
+<mat-form-field appearance="outline">
+    <mat-label>Titulacion</mat-label>
+    <mat-select [(ngModel)]="seleccion">
+      <mat-option *ngFor="let titulacion of lista_titulaciones" value="{{titulacion}}">{{titulacion}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+<app-nav-admin></app-nav-admin>

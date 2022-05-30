@@ -1,0 +1,15 @@
+<mat-toolbar class="menu_navegacion">
+    <div class="opciones_iconos" [routerLink]="['/admin_asignaturas', usuario]" routerLinkActive="activado" matRipple centered="True">
+        <button mat-icon-button disabled>
+            <mat-icon class="iconos_nav">assignment</mat-icon>
+        </button>
+        <span class="texto_icono">Asignaturas</span>
+    </div>
+
+    <div class="opciones_iconos" [routerLink]="['/admin_usuarios', usuario]" routerLinkActive="activado" matRipple centered="True">
+        <button mat-icon-button>
+            <mat-icon class="iconos_nav">people</mat-icon>
+        </button>
+        <span class="texto_icono">Usuarios</span>
+    </div>
+</mat-toolbar>

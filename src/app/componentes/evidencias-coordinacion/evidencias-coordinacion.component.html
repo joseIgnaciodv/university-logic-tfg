@@ -2,8 +2,18 @@
   
 <div class="linea"></div>
 
-<div class="contenedor_acta"></div>
+<div class="contenedor" matRipple centered="True" (click)="navegar_actas()">
+    <div class="tipo">
+        <span>Actas</span>
+    </div>
+    <img class="actas" src="assets/images/check-list.png" alt="Lista de tareas icono">
+</div>
 
-<div class="contenedor_informe"></div>
+<div class="contenedor" matRipple centered="True" (click)="navegar_informes()">
+    <div class="tipo">
+        <span>Informes</span>
+    </div>
+    <img src="assets/images/seo-report.png" alt="Informe">
+</div>
 
 <app-navegacion-coordinador></app-navegacion-coordinador>

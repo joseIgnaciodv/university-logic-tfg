@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-navegacion',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-navegacion.component.scss']
 })
 export class MenuNavegacionComponent implements OnInit {
+  profesor: string = "";
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.profesor = this.route.snapshot.params['usuario'];
   }
 
 }

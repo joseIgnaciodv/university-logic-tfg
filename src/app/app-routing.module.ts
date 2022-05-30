@@ -8,16 +8,22 @@ import { NuevaEvidenciaComponent } from './componentes/nueva-evidencia/nueva-evi
 import { EvidenciasCoordinacionComponent } from './componentes/evidencias-coordinacion/evidencias-coordinacion.component';
 import { EstadisticasComponent } from './componentes/estadisticas/estadisticas.component';
 import { ActasComponent } from './componentes/actas/actas.component';
+import { InformesComponent } from './componentes/informes/informes.component';
+import { AdminAsignaturasComponent } from './componentes/admin-asignaturas/admin-asignaturas.component';
+import { AdminUsuariosComponent } from './componentes/admin-usuarios/admin-usuarios.component';
 
 const routes: Routes = [
-  {path: 'clases', component: MisClasesComponent},
+  {path: 'clases/:usuario', component: MisClasesComponent},
   {path: '', component: LoginComponent},
-  {path: 'sin_evidencias', component: EvidenciasVaciaComponent},
-  {path: 'clases/evidencias_asignatura', component: EvidenciasAsignaturaComponent},
-  {path: 'nueva_evidencia', component: NuevaEvidenciaComponent},
-  {path: 'evidencias_coordinacion', component: EvidenciasCoordinacionComponent},
-  {path: 'estadisticas', component: EstadisticasComponent},
-  {path: 'actas', component: ActasComponent}
+  {path: 'sin_evidencias/:usuario/:asignatura', component: EvidenciasVaciaComponent},
+  {path: 'clases/evidencias_asignatura/:usuario/:asignatura', component: EvidenciasAsignaturaComponent},
+  {path: 'nueva_evidencia/:usuario/:asignatura', component: NuevaEvidenciaComponent},
+  {path: 'evidencias_coordinacion/:usuario', component: EvidenciasCoordinacionComponent},
+  {path: 'estadisticas/:usuario', component: EstadisticasComponent},
+  {path: 'actas/:usuario', component: ActasComponent},
+  {path: 'informes/:usuario', component: InformesComponent},
+  {path: 'admin_asignaturas/:usuario', component: AdminAsignaturasComponent},
+  {path: 'admin_usuarios/:usuario', component: AdminUsuariosComponent},
 ];
 
 @NgModule({

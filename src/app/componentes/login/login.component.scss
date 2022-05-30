@@ -1,4 +1,11 @@
 @media only screen and (max-width: 600px){
+
+    .barra_movil{
+        width: 100%;
+        height: 40px;
+        background-color: #3F51B5;
+    }
+
     .vista_login{
         width: 100%;
     }
@@ -66,6 +73,11 @@
 }
 
 @media only screen and (min-width: 992px) {
+
+    .barra_movil{
+        display: none;
+    }
+
     .vista_login{
         border: 2.25px solid darkgray;
         border-radius: 10px;

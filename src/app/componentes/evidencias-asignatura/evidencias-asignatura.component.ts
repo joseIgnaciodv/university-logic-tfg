@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Evidencia } from 'src/app/modelos/evidencia';
 import { CargadorService } from 'src/app/servicios/cargador.service';
 import { ServiciosApiService } from 'src/app/servicios/servicios-api.service';
@@ -9,13 +10,13 @@ import { ServiciosApiService } from 'src/app/servicios/servicios-api.service';
   styleUrls: ['./evidencias-asignatura.component.scss']
 })
 export class EvidenciasAsignaturaComponent implements OnInit {
-  
+  profesor: string = "";
+  asignatura: string = "";
   ahora: Date = new Date()
   lista_evidencias: Evidencia[] = [];
-  nombre_asignatura = "Interfaces de Usuario"
   busqueda = "";
 
-  constructor(private api: ServiciosApiService, public cargador: CargadorService) { }
+  constructor(private api: ServiciosApiService, public cargador: CargadorService, private route: ActivatedRoute) { }
 
   buscar(consulta: string){
     if(consulta != ""){
@@ -39,15 +40,16 @@ export class EvidenciasAsignaturaComponent implements OnInit {
 
 
   get_evidencias(){
-    this.api.get_nombre_asignatura(this.nombre_asignatura).subscribe(nombre =>{
-      let respuesta = this.api.get_evidencias("Grado Ingenieria Informatica", nombre.asignatura)
-      respuesta.subscribe(evidencia =>{
-        this.lista_evidencias = evidencia.evidencias;
+    this.api.get_info_asignatura(this.asignatura).subscribe(clase =>{
+      this.api.get_evidencias(clase.titulacion, clase.asignatura, clase.cod_asigna).subscribe(evidencias =>{
+        this.lista_evidencias = evidencias.evidencias;
       })
     })
   }
 
   ngOnInit(): void {
+    this.profesor = this.route.snapshot.params['usuario']
+    this.asignatura = this.route.snapshot.params['asignatura']
     this.get_evidencias();
   }
 

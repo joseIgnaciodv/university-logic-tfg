@@ -1,15 +1,23 @@
+<div class="barra_movil"></div>
+
 <div class="cabecera">
-  <div class="nombre_usuario">
-      <input type="text" id="usuario" class="usuario" value="Jose Ignacio Del Valle Bustillo">
-  </div>
-  <button mat-mini-fab class="icono_usuario" color="default">
-      <mat-icon>person</mat-icon>
+  <button class="volver" mat-fab color="primary" [routerLink]="['/clases', profesor]">
+    <mat-icon>arrow_back</mat-icon>
   </button>
+  
+  <div class="contenedor_usuario">
+    <div class="nombre_usuario">
+      <input type="text" id="usuario" class="usuario" value={{profesor}}>
+    </div>
+    <button mat-mini-fab class="icono_usuario" color="default">
+      <mat-icon>person</mat-icon>
+    </button>
+  </div>
 </div>
 
 <div class="espacio"></div>
 
-<input  id="asignatura" class="asignatura" type="text" value="Interfaces de Usuario">
+<textarea id="asignatura" class="asignatura" type="text" value={{asignatura}}></textarea>
 
 <div class="linea"></div>
 
@@ -26,6 +34,20 @@
   <mat-form-field appearance="outline" class="contenedor_campo">
     <mat-label>Asignatura</mat-label>
     <input matInput disabled value="{{asignatura}}">
+  </mat-form-field>
+</div>
+
+<div class="contenedor_titulacion">
+  <mat-form-field appearance="outline" class="contenedor_campo">
+    <mat-label>Titulacion</mat-label>
+    <input matInput disabled value="{{titulacion}}">
+  </mat-form-field>
+</div>
+
+<div class="contenedor_codigo">
+  <mat-form-field appearance="outline" class="contenedor_campo">
+    <mat-label>Codigo Asignatura</mat-label>
+    <input matInput disabled value="{{codigo}}">
   </mat-form-field>
 </div>
 

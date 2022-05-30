@@ -1,10 +1,11 @@
 export interface Clase {
-    codigo_asignatura:number,
-    nombre_asignatura:string,
-    nombre_completo:string,
-    profesor:string,
-    ects: number,
+    cod_asigna: string,
+    asignatura:string,
+    nombre_completo: string,
+    profesor: string,
+    num_grupo: string,
     curso: number,
-    semestre:number,
-    modalidad: string
+    trimestre:string,
+    facultad: string,
+    titulacion: string
 }

@@ -1,18 +1,29 @@
 @media only screen and (max-width: 600px){
 
+    .barra_movil{
+        width: 100%;
+        height: 40px;
+        background-color: #3F51B5;
+    }
+
     .cabecera{
+        margin-top: 3%;
         width: 100%;
         display: flex;
-        justify-content: right;
+        justify-content: space-between;
     }
 
-    .nombre_usuario{
+    .volver{
+        margin-top: 2%;
+        margin-left: 2%;
+    }
+
+    .contenedor_usuario{
         margin-top: 3%;
         margin-right: 3%;
-    }
-
-    .icono_usuario{
-        margin: 3% 2.5%;
+        width: 65%;
+        display: flex;
+        justify-content: space-between;
     }
 
     .usuario{
@@ -35,6 +46,8 @@
 
     .asignatura{
         background-color: azure;
+        width: 80%;
+        height: 8%;
         margin: 0 10%;
         border-style: none;
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -50,7 +63,7 @@
 
     .circulo{
         position: fixed;
-        margin: 27% 10%;
+        margin: 20% 10%;
         background-color: lightgray;
         border-radius: 50%;
         width: 80%;

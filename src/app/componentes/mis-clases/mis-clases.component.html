@@ -1,36 +1,46 @@
-<div class="contenedor_usuario">
-    <mat-chip-list aria-label="Usuario" class="nombre_usuario">
-        <mat-chip selected>Jose Ignacio Del Valle Bustillo</mat-chip>
-      </mat-chip-list>
+<div class="barra_movil"></div>
+
+<div class="cabecera">
+    <div class="nombre_usuario">
+        <input type="text" id="usuario" class="usuario" value={{profesor}}>
+    </div>
     <button mat-mini-fab class="icono_usuario" color="default">
         <mat-icon>person</mat-icon>
     </button>
-</div>
+  </div>
 
-<div class="acciones_clase">
-    <h2 class="titulo">Mis Clases</h2>
-    <div class="accion_editar">
-        <button mat-mini-fab color="primary">
-            <mat-icon>edit</mat-icon>
-        </button>
-    </div>
-    
-    <div class="accion_aniadir">
-        <button mat-mini-fab color="primary">
-            <mat-icon>add</mat-icon>
-        </button>
-    </div>
-</div>
+
+<h2 class="titulo">Mis Clases</h2>
+
 
 <div class="linea">
 </div>
 
-<div class="clase" *ngFor="let clase of mis_clases" matRipple centered="True" (click)="ver_evidencias(clase.nombre_asignatura)">
-    <div class="nombre_clase">
-        <span>{{clase.nombre_asignatura}}</span>
+<div class="clase" *ngFor="let clase of mis_clases" matRipple centered="True" (click)="ver_evidencias(clase.asignatura)">
+    <span class="nombre_clase">{{clase.asignatura}}</span>
+
+    <div class="contenedor">
+        <div class="contenedor_semestre">
+            <span>Semestre: </span>
+            <mat-chip-list>
+                <mat-chip [ngClass]="{'semestre1': clase.trimestre == 'S1', 'semestre2': clase.trimestre == 'S2'}" selected>{{clase.trimestre}}</mat-chip>
+            </mat-chip-list>
+        </div>
+    
+        <div class="contenedor_curso">
+            <span>Curso: </span>
+            <mat-chip-list>
+                <mat-chip [ngClass]="{'curso1': clase.curso == 1, 'curso2': clase.curso == 2, 'curso3': clase.curso == 3, 'curso4': clase.curso == 4}" selected>{{clase.curso}}</mat-chip>
+            </mat-chip-list>
+        </div>
     </div>
-    <div class="contenedor_imagen">
-        <img class="imagen_clase" src="assets/images/graduate-cap.png" alt="Graduation Cap">
+
+
+    <div class="contenedor_grupo">
+        <span>Grupo: </span>
+        <mat-chip-list>
+            <mat-chip color="primary" selected>{{clase.num_grupo}}</mat-chip>
+        </mat-chip-list>
     </div>
 </div>
 

@@ -1,15 +1,25 @@
+<div class="barra_movil"></div>
+
 <div class="cabecera">
-    <div class="nombre_usuario">
-        <input type="text" id="usuario" class="usuario" value="Jose Ignacio Del Valle Bustillo">
-    </div>
-    <button mat-mini-fab class="icono_usuario" color="default">
-        <mat-icon>person</mat-icon>
+    <button class="volver" mat-fab color="primary" [routerLink]="['/clases', profesor]">
+      <mat-icon>arrow_back</mat-icon>
     </button>
+    
+    <div class="contenedor_usuario">
+      <div class="nombre_usuario">
+        <input type="text" id="usuario" class="usuario" value={{profesor}}>
+      </div>
+
+      <button mat-mini-fab class="icono_usuario" color="default">
+        <mat-icon>person</mat-icon>
+      </button>
+      
+    </div>
   </div>
   
   <div class="espacio"></div>
   
-  <input  id="asignatura" class="asignatura" type="text" value="Interfaces de Usuario">
+  <textarea id="asignatura" class="asignatura" type="text" value={{asignatura}}></textarea>
   
   <div class="linea"></div>
 
@@ -23,7 +33,7 @@
 </div>
 
 <div class="aniadir">
-    <button mat-fab color="primary" routerLink="/nueva_evidencia">
+    <button mat-fab color="primary" (click)="navegar_evidencia_nueva()">
         <mat-icon>add</mat-icon>
     </button>
 </div>
