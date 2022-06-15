@@ -1,41 +1,67 @@
 <div class="barra_movil"></div>
 
-<div class="cabecera">
-    <button class="volver" mat-fab color="primary" [routerLink]="['/clases', profesor]">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-    
-    <div class="contenedor_usuario">
-      <div class="nombre_usuario">
-        <input type="text" id="usuario" class="usuario" value={{profesor}}>
-      </div>
+<div *ngIf="cargando" class="contenedor_spinner">
+  <mat-progress-spinner class="spinner" mode="indeterminate"></mat-progress-spinner>
+  <span>Cargando . . .</span>
+</div>
 
-      <button mat-mini-fab class="icono_usuario" color="default">
+<mat-drawer-container>
+  <mat-drawer class="side_nav" #drawer mode="push" position="end">
+    <mat-nav-list>
+      <a mat-list-item>
+        <div class="cerrar_sideNav">
+          <mat-icon (click)="drawer.toggle()">close</mat-icon>
+        </div>
+      </a>
+      <a mat-list-item [routerLink]="['/perfil', profesor]">
         <mat-icon>person</mat-icon>
+        Mi Perfil
+      </a>
+      <a mat-list-item (click)="cerrar_sesion(drawer)">
+        <mat-icon>exit_to_app</mat-icon>
+        Cerrar Sesion
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="cabecera">
+      <button class="volver" mat-fab color="primary" [routerLink]="['/clases', profesor]">
+        <mat-icon>arrow_back</mat-icon>
       </button>
-      
-    </div>
-  </div>
-  
-  <div class="espacio"></div>
-  
-  <textarea id="asignatura" class="asignatura" type="text" value={{asignatura}}></textarea>
-  
-  <div class="linea"></div>
 
-<div class="circulo">
-    <div class="contenido">
+      <div class="contenedor_usuario">
+        <div class="nombre_usuario">
+          <input type="text" id="usuario" class="usuario" value={{profesor}} disabled>
+        </div>
+
+        <button mat-mini-fab class="icono_usuario" color="default" (click)="drawer.toggle()">
+          <mat-icon>person</mat-icon>
+        </button>
+
+      </div>
+    </div>
+
+    <div class="espacio"></div>
+
+    <textarea id="asignatura" class="asignatura" type="text" value={{asignatura}} disabled></textarea>
+
+    <div class="linea"></div>
+
+    <div class="circulo">
+      <div class="contenido">
         <img src="assets/images/folder.png" alt="carpetas de colores">
         <span class="titulo">No Hay Evidencias</span>
         <span class="subtitulo">Pulse el boton<strong> + </strong> para </span>
         <span class="subtitulo"> agregar nuevas evidencias </span>
+      </div>
     </div>
-</div>
 
-<div class="aniadir">
-    <button mat-fab color="primary" (click)="navegar_evidencia_nueva()">
+    <div class="aniadir">
+      <button mat-fab color="primary" (click)="navegar_evidencia_nueva()">
         <mat-icon>add</mat-icon>
-    </button>
-</div>
+      </button>
+    </div>
 
-<app-menu-navegacion></app-menu-navegacion>
+    <app-menu-navegacion></app-menu-navegacion>
+  </mat-drawer-content>
+</mat-drawer-container>

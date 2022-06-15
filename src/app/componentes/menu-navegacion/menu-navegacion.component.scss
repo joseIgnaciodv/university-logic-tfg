@@ -1,39 +1,37 @@
-@media only screen and (max-width: 600px){
-    .menu_navegacion{
-        display: flex;
-        justify-content: center;
-        background-color: #3F51B5;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
+.menu_navegacion{
+    display: flex;
+    justify-content: center;
+    background-color: #3F51B5;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
-    .opciones_iconos{
-        height: 56px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        & .texto_icono{
-            margin-bottom: 20%;
-            font-size: 14px;
-            color: lightgrey;
-        }
+.opciones_iconos{
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    & .texto_icono{
+        margin-bottom: 20%;
+        font-size: 14px;
+        color: lightgrey;
     }
-    
+}
+
+.iconos_nav{
+    margin-top: 50%;
+    color: lightgray;
+}
+
+.activado{
     .iconos_nav{
-        margin-top: 50%;
-        color: lightgray;
+        color: coral;
+        transition: 0.3s;
     }
-    
-    .activado{
-        .iconos_nav{
-            color: coral;
-            transition: 0.3s;
-        }
-        .texto_icono{
-            color: coral;
-            transition: 0.3s;
-        }
+    .texto_icono{
+        color: coral;
+        transition: 0.3s;
+    }
 
-    }
 }

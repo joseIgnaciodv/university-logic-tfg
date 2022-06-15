@@ -1,53 +1,83 @@
-<div class="barra_movil"></div>
-
-<div class="cabecera">
-    <div class="nombre_usuario">
-        <input type="text" id="usuario" class="usuario" value={{profesor}}>
-    </div>
-    <button mat-mini-fab class="icono_usuario" color="default">
-        <mat-icon>person</mat-icon>
-    </button>
-  </div>
-
-
-<h2 class="titulo">Mis Clases</h2>
-
-
-<div class="linea">
+<div *ngIf="cargando" class="contenedor_spinner">
+    <mat-progress-spinner class="spinner" mode="indeterminate"></mat-progress-spinner>
+    <span>Cargando . . .</span>
 </div>
 
-<div class="clase" *ngFor="let clase of mis_clases" matRipple centered="True" (click)="ver_evidencias(clase.asignatura)">
-    <span class="nombre_clase">{{clase.asignatura}}</span>
+<div *ngIf="!cargando">
+    <div class="barra_movil"></div>
 
-    <div class="contenedor">
-        <div class="contenedor_semestre">
-            <span>Semestre: </span>
-            <mat-chip-list>
-                <mat-chip [ngClass]="{'semestre1': clase.trimestre == 'S1', 'semestre2': clase.trimestre == 'S2'}" selected>{{clase.trimestre}}</mat-chip>
-            </mat-chip-list>
-        </div>
-    
-        <div class="contenedor_curso">
-            <span>Curso: </span>
-            <mat-chip-list>
-                <mat-chip [ngClass]="{'curso1': clase.curso == 1, 'curso2': clase.curso == 2, 'curso3': clase.curso == 3, 'curso4': clase.curso == 4}" selected>{{clase.curso}}</mat-chip>
-            </mat-chip-list>
-        </div>
-    </div>
+    <mat-drawer-container>
+        <mat-drawer class="side_nav" #drawer mode="push" position="end">
+            <mat-nav-list>
+                <a mat-list-item>
+                    <div class="cerrar_sideNav">
+                        <mat-icon (click)="drawer.toggle()">close</mat-icon>
+                    </div>
+                </a>
+                <a mat-list-item [routerLink]="['/perfil', profesor]">
+                    <mat-icon>person</mat-icon>
+                    Mi Perfil
+                </a>
+                <a mat-list-item (click)="cerrar_sesion(drawer)">
+                    <mat-icon>exit_to_app</mat-icon>
+                    Cerrar Sesion
+                </a>
+            </mat-nav-list>
+        </mat-drawer>
+        <mat-drawer-content>
+            <div class="cabecera">
+                <div>.</div>
+                <div class="contenido_cabecera">
+                    <div class="nombre_usuario">
+                        <input type="text" id="usuario" class="usuario" value={{profesor}} disabled>
+                    </div>
+                    <button mat-mini-fab class="icono_usuario" color="default">
+                        <mat-icon (click)="drawer.toggle()">person</mat-icon>
+                    </button>
+                </div>
+            </div>
+        
+            <h2 class="titulo">Mis Clases</h2>
+        
+        
+            <div class="linea">
+            </div>
+        
+            <div class="clase" *ngFor="let clase of mis_clases" matRipple centered="True" (click)="ver_evidencias(clase.asignatura)">
+                <span class="nombre_clase">{{clase.asignatura}}</span>
+            
+                <div class="contenedor">
+                    <div class="contenedor_semestre">
+                        <span>Semestre: </span>
+                        <mat-chip-list>
+                            <mat-chip [ngClass]="{'semestre1': clase.trimestre == 'S1', 'semestre2': clase.trimestre == 'S2'}" selected>{{clase.trimestre}}</mat-chip>
+                        </mat-chip-list>
+                    </div>
+                
+                    <div class="contenedor_curso">
+                        <span>Curso: </span>
+                        <mat-chip-list>
+                            <mat-chip [ngClass]="{'curso1': clase.curso == 1, 'curso2': clase.curso == 2, 'curso3': clase.curso == 3, 'curso4': clase.curso == 4}" selected>{{clase.curso}}</mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </div>
+            
+            
+                <div class="contenedor_grupo">
+                    <div>.</div>
+                    <div class="grupo">
+                        <span>Grupo: </span>
+                        <mat-chip-list>
+                            <mat-chip color="primary" selected>{{clase.num_grupo}}</mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="espacio"></div>
+        
+            <app-menu-navegacion></app-menu-navegacion>
+        </mat-drawer-content>
+    </mat-drawer-container>
 
-
-    <div class="contenedor_grupo">
-        <span>Grupo: </span>
-        <mat-chip-list>
-            <mat-chip color="primary" selected>{{clase.num_grupo}}</mat-chip>
-        </mat-chip-list>
-    </div>
 </div>
-
-<div class="espacio"></div>
-
-<div *ngIf="cargador.estaCargando | async" class="cargando">
-    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-</div>
-
-<app-menu-navegacion></app-menu-navegacion>

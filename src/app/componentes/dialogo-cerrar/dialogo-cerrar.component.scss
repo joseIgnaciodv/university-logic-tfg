@@ -1,0 +1,56 @@
+.dialogo{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 200px;
+    height: 175px;
+}
+
+.cerrar{
+    position: absolute;
+    right: 0;
+    margin-right: 1.5%;
+}
+
+.contenedor_info{
+    display: flex;
+    margin: 25% auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.info{
+    margin-top: 10%;
+    transform: scale(3);
+    color: lightblue !important;
+}
+
+.contenedor_mensaje{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+
+    & span{
+        margin: 3%;
+        color: black;
+        font-weight: 500;
+        font-size: 16px;
+    }
+}
+
+.boton_cancelar{
+    border-radius: 15px;
+    border: 1.5px solid crimson;
+    color: crimson;
+    font-weight: 500;
+}
+
+.boton_ok{
+    border-radius: 15px;
+    border: 1.5px solid #3F51B5;
+    color: #3F51B5;
+    font-weight: 500;
+}

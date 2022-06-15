@@ -8,6 +8,8 @@ import { Evidencias } from '../modelos/evidencias';
 import { Respuesta } from '../modelos/respuesta';
 import { Titulaciones } from '../modelos/titulaciones';
 import { Clase } from '../modelos/clase';
+import { RespuestaQR } from '../modelos/respuesta-qr';
+import { Usuario } from '../modelos/usuario';
 
 
 @Injectable({
@@ -63,11 +65,16 @@ export class ServiciosApiService {
     return this.http.get<Clase>(url);
   }
 
-  crear_qr(profesor: string, asignatura: string, tipo: string, nombre: string, descripcion: string, titulacion: string, codigo: string): Observable<Respuesta>{
+  crear_qr(profesor: string, asignatura: string, tipo: string, nombre: string, descripcion: string, titulacion: string, codigo: string): Observable<RespuestaQR>{
     let datos = {"profesor": profesor, "asignatura": asignatura, "tipo": tipo, "nombre": nombre, "descripcion": descripcion, 'titulacion': titulacion, 'cod_asigna': codigo};
     let url_qr = "crear_codigo_qr";
     let url = environment.apiURL + url_qr;
-    return this.http.post<Respuesta>(url, datos)
+    return this.http.post<RespuestaQR>(url, datos)
+  }
+
+  descargar_qr(nombre_fichero: string): Observable<string>{
+    let url = environment.apiURL + "descargar_qr/" + nombre_fichero;
+    return this.http.get<string>(url);
   }
 
   subir_titulaciones(titulacion: string): Observable<Respuesta>{
@@ -87,5 +94,22 @@ export class ServiciosApiService {
   get_asignaturas_coordinador(nombre: string): Observable<string[]>{
     let url = environment.apiURL + "coordinadores/" + nombre;
     return this.http.get<string[]>(url);
+  }
+
+  validar_usuario(correo: string, pass: string, tipo: string): Observable<string>{
+    let datos = {'correo': correo, 'pass': pass, 'tipo': tipo};
+    let url = environment.apiURL + "validar_usuario";
+    return this.http.post<string>(url, datos);
+  }
+
+  get_usuario(nombre: string, tipo: string): Observable<Usuario>{
+    let url = environment.apiURL + "get_usuario/" + nombre + "/" + tipo;
+    return this.http.get<Usuario>(url);
+  }
+
+  validar_pass(tipo: string, correo: string, pass_actual: string, nueva_pass: string, nueva_pass_confirmar: string): Observable<string>{
+    let datos = {"tipo": tipo, "correo": correo, "pass_actual": pass_actual, "pass_nueva": nueva_pass, "pass_confirmar": nueva_pass_confirmar};
+    let url = environment.apiURL + "validar_contraseña"
+    return this.http.post<string>(url, datos);
   }
 }

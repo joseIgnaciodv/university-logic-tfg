@@ -1,0 +1,43 @@
+.dialogo{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.cerrar{
+    position: absolute;
+    right: 0;
+    margin-right: 1.5%;
+}
+
+.contenedor_error{
+    display: flex;
+    margin: 25% auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.error{
+    margin-top: 10%;
+    transform: scale(3);
+    color: red !important;
+}
+
+.contenedor_mensaje{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 90%;
+    border-radius: 15px;
+    border: 1.5px solid red;
+    margin: 0 auto;
+    background-color: #f8d7d7;
+    & span{
+        margin: 3%;
+        color: #b53d39;
+        font-weight: 500;
+    }
+}

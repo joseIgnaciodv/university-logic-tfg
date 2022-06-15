@@ -1,88 +1,119 @@
-<div class="barra_movil"></div>
+<div *ngIf="cargando" class="contenedor_spinner">
+  <mat-progress-spinner class="spinner" mode="indeterminate"></mat-progress-spinner>
+  <span>Cargando . . .</span>
+</div>
 
-<div class="cabecera">
-  <button class="volver" mat-fab color="primary" [routerLink]="['/clases', profesor]">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-  
-  <div class="contenedor_usuario">
-    <div class="nombre_usuario">
-      <input type="text" id="usuario" class="usuario" value={{profesor}}>
+<mat-drawer-container>
+  <mat-drawer class="side_nav" #drawer mode="push" position="end">
+    <mat-nav-list>
+      <a mat-list-item>
+        <div class="cerrar_sideNav">
+          <mat-icon (click)="drawer.toggle()">close</mat-icon>
+        </div>
+      </a>
+      <a mat-list-item [routerLink]="['/perfil', profesor]">
+        <mat-icon>person</mat-icon>
+        Mi Perfil
+      </a>
+      <a mat-list-item (click)="cerrar_sesion(drawer)">
+        <mat-icon>exit_to_app</mat-icon>
+        Cerrar Sesion
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div *ngIf="!cargando">
+      <div class="barra_movil"></div>
+
+      <div class="cabecera">
+        <button class="volver" mat-fab color="primary" [routerLink]="['/clases', profesor]">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+
+        <div class="contenedor_usuario">
+          <div class="nombre_usuario">
+            <input type="text" id="usuario" class="usuario" value={{profesor}} disabled>
+          </div>
+          <button mat-mini-fab class="icono_usuario" color="default" (click)="drawer.toggle()">
+            <mat-icon>person</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="espacio"></div>
+
+      <textarea id="asignatura" class="asignatura" type="text" value={{asignatura}} disabled></textarea>
+
+      <div class="linea"></div>
+
+      <div class="espacio"></div>
+
+      <div class="contenedor_profesor">
+        <mat-form-field appearance="outline" class="contenedor_campo">
+          <mat-label>Profesor</mat-label>
+          <input matInput disabled value="{{profesor}}">
+        </mat-form-field>
+      </div>
+
+      <div class="contenedor_asignatura">
+        <mat-form-field appearance="outline" class="contenedor_campo">
+          <mat-label>Asignatura</mat-label>
+          <input matInput disabled value="{{asignatura}}">
+        </mat-form-field>
+      </div>
+
+      <div class="contenedor_titulacion">
+        <mat-form-field appearance="outline" class="contenedor_campo">
+          <mat-label>Titulacion</mat-label>
+          <input matInput disabled value="{{titulacion}}">
+        </mat-form-field>
+      </div>
+
+      <div class="contenedor_codigo">
+        <mat-form-field appearance="outline" class="contenedor_campo">
+          <mat-label>Codigo Asignatura</mat-label>
+          <input matInput disabled value="{{codigo}}">
+        </mat-form-field>
+      </div>
+
+      <div class="contenedor_tipo">
+        <mat-form-field appearance="outline" class="contenedor_campo">
+          <mat-label>Tipo de Evidencia</mat-label>
+          <mat-select [(ngModel)]="tipo" (keyup)="validar_evidencia()">
+            <mat-option *ngFor="let tipo of evidencias" value="{{tipo}}">{{tipo}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="contenedor_nombre">
+        <mat-form-field appearance="outline" class="contenedor_campo">
+          <mat-label>Nombre Evidencia</mat-label>
+          <input matInput [(ngModel)]="nombre" (keyup)="validar_evidencia()">
+        </mat-form-field>
+      </div>
+
+      <!-- <div class="contenedor_archivos">
+        <mat-form-field appearance="outline" class="contenedor_campo">
+          <mat-label>Tipo de Archivo</mat-label>
+          <mat-select [(ngModel)]="fichero" multiple (keyup)="validar_evidencia()">
+            <mat-option *ngFor="let ext of archivos" value="ext">{{ext}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div> -->
+
+      <div class="contenedor_descripcion">
+        <mat-form-field appearance="outline" class="contenedor_campo">
+          <mat-label>Descripcion</mat-label>
+          <textarea matInput placeholder="Descripcion Evidencia ..." [(ngModel)]="descripcion"
+            (keyup)="validar_evidencia()"></textarea>
+        </mat-form-field>
+      </div>
+
+
+
+      <button class="boton_evidencia" mat-raised-button color="primary" (click)="set_evidencia()"
+        [disabled]="completo">Crear Evidencia</button>
     </div>
-    <button mat-mini-fab class="icono_usuario" color="default">
-      <mat-icon>person</mat-icon>
-    </button>
-  </div>
-</div>
 
-<div class="espacio"></div>
-
-<textarea id="asignatura" class="asignatura" type="text" value={{asignatura}}></textarea>
-
-<div class="linea"></div>
-
-<div class="espacio"></div>
-
-<div class="contenedor_profesor">
-  <mat-form-field appearance="outline" class="contenedor_campo">
-    <mat-label>Profesor</mat-label>
-    <input matInput disabled value="{{profesor}}">
-  </mat-form-field>
-</div>
-
-<div class="contenedor_asignatura">
-  <mat-form-field appearance="outline" class="contenedor_campo">
-    <mat-label>Asignatura</mat-label>
-    <input matInput disabled value="{{asignatura}}">
-  </mat-form-field>
-</div>
-
-<div class="contenedor_titulacion">
-  <mat-form-field appearance="outline" class="contenedor_campo">
-    <mat-label>Titulacion</mat-label>
-    <input matInput disabled value="{{titulacion}}">
-  </mat-form-field>
-</div>
-
-<div class="contenedor_codigo">
-  <mat-form-field appearance="outline" class="contenedor_campo">
-    <mat-label>Codigo Asignatura</mat-label>
-    <input matInput disabled value="{{codigo}}">
-  </mat-form-field>
-</div>
-
-<div class="contenedor_tipo">
-  <mat-form-field appearance="outline" class="contenedor_campo">
-    <mat-label>Tipo de Evidencia</mat-label>
-    <mat-select [(ngModel)]="tipo" (keyup)="validar_evidencia()">
-      <mat-option *ngFor="let tipo of evidencias" value="{{tipo}}">{{tipo}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-
-<div class="contenedor_nombre">
-  <mat-form-field appearance="outline" class="contenedor_campo">
-    <mat-label>Nombre Evidencia</mat-label>
-    <input matInput [(ngModel)]="nombre" (keyup)="validar_evidencia()">
-  </mat-form-field>
-</div>
-
-<div class="contenedor_archivos">
-  <mat-form-field appearance="outline" class="contenedor_campo">
-    <mat-label>Tipo de Archivo</mat-label>
-    <mat-select [(ngModel)]="fichero" multiple (keyup)="validar_evidencia()">
-      <mat-option *ngFor="let ext of archivos" value="ext">{{ext}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-
-<div class="contenedor_descripcion">
-  <mat-form-field appearance="outline" class="contenedor_campo">
-    <mat-label>Descripcion</mat-label>
-    <textarea matInput placeholder="Descripcion Evidencia ..." [(ngModel)]="descripcion" (keyup)="validar_evidencia()"></textarea>
-  </mat-form-field>
-</div>
-
-
-
-<button class="boton_evidencia" mat-raised-button color="primary" (click)="set_evidencia()" [disabled]="completo">Crear Evidencia</button>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,94 @@
+<div *ngIf="cargando" class="contenedor_spinner">
+  <mat-progress-spinner class="spinner" mode="indeterminate"></mat-progress-spinner>
+  <span>Cargando . . .</span>
+</div>
+
+<div class="cabecera">
+    <button id="volver" mat-mini-fab color="primary" [routerLink]="['/evidencias_coordinacion', usuario]">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+</div>
+
+<h2 class="titulo">Mi Perfil</h2>
+  
+<div class="linea"></div>
+
+<div class="espacio"></div>
+
+<div class="contenedor_info">
+    <div class="contenedor_titulo">
+        <span>Información General</span>
+        <mat-icon (click)="pulsado_info = !pulsado_info; pulsado_pass = !pulsado_pass" [ngClass]="{'pulsado_info': pulsado_pass, 'no_pulsado_info': !pulsado_pass}">add_circle</mat-icon>
+    </div>
+    
+    <div class="contenedor_desplegable" *ngIf="pulsado_info">
+        <div class="contenedor">
+            <span class="titulo_atributo">Nombre: </span>
+            <div class="contenedor_atributo">
+                <mat-icon>person</mat-icon>
+                <span>{{usuario}}</span>
+            </div>
+        </div>
+        
+        <div class="contenedor">
+            <span class="titulo_atributo">ID Empleado: </span>
+            <div class="contenedor_atributo">
+                <mat-icon>lock</mat-icon>
+                <span>{{cod_usuario}}</span>
+            </div>
+        </div>
+        
+        <div class="contenedor">
+            <span class="titulo_atributo">Perfil de Usuario:</span>
+            <div class="contenedor_atributo">
+                <mat-icon>settings</mat-icon>
+                <span>{{tipo}}</span>
+            </div>            
+        </div>
+        
+        <div class="contenedor">
+            <span class="titulo_atributo">Correo Electronico:</span>
+            <div class="contenedor_atributo">
+                <mat-icon>mail</mat-icon>
+                <textarea name="correo" id="correo">{{correo}}</textarea>
+            </div>            
+        </div>
+    </div>
+</div>
+
+<div class="contenedor_pass">
+    <div class="contenedor_titulo">
+        <span>Cambiar Contraseña</span>
+        <mat-icon (click)="pulsado_pass = !pulsado_pass; pulsado_info = !pulsado_info" [ngClass]="{'pulsado_pass': pulsado_pass, 'no_pulsado_pass': !pulsado_pass}">add_circle</mat-icon>
+    </div>
+
+    <div class="contenedor_desplegable" *ngIf="pulsado_pass">
+        <div class="contenedor_campo">
+            <mat-form-field appearance="outline" class="campo">
+                <mat-label>Contraseña actual</mat-label>
+                <input matInput type="password" [(ngModel)]="pass_actual">
+            </mat-form-field>
+        </div>
+    
+        <div class="contenedor_campo">
+            <mat-form-field appearance="outline" class="campo">
+                <mat-label>Nueva contraseña</mat-label>
+                <input matInput type="password" [(ngModel)]="nueva_pass">
+            </mat-form-field>
+        </div>
+    
+        <div class="contenedor_campo">
+            <mat-form-field appearance="outline" class="campo">
+                <mat-label>Confirmar contraseña</mat-label>
+                <input matInput type="password" [(ngModel)]="nueva_pass_confirmar">
+            </mat-form-field>
+        </div>
+    
+        <div class="contenedor_botones">
+            <button mat-raised-button color="default" (click)="cancelar()">Cancelar</button>
+            <button mat-raised-button color="primary" (click)="validar_pass()">Guardar Cambios</button>
+        </div>
+    </div>
+</div>
+
+<div class="espacio_final"></div>

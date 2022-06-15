@@ -1,146 +1,175 @@
-@media only screen and (max-width: 600px){
 
-    .barra_movil{
+// .barra_movil{
+//     top: 0;
+//     z-index: 1;
+//     width: 100%;
+//     height: 40px;
+//     background-color: #3F51B5;
+//     position: fixed;
+// }
+
+mat-drawer-container{
+    background-color: azure;
+    height: 100%;
+}
+
+.cerrar_sideNav{
+    position: absolute;
+    right: 0;
+    margin-right: 3%;
+}
+
+mat-nav-list a mat-icon{
+    color: #3F51B5 !important;
+}
+
+.contenedor_spinner{
+    z-index: 1;
+    width: 50%;
+    min-height: 45vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    margin: 50% auto;
+    background-color: azure;
+}
+
+.cabecera{
+    margin-top: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.volver{
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+.contenedor_usuario{
+    margin-top: 3%;
+    margin-right: 3%;
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.usuario{
+    padding: 3%;
+    border-radius: 15px;
+    border: 2px solid lightgray;
+    background-color: coral !important;
+    width: fit-content;
+    height: 20px;
+    color: white;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.linea{
+    width: 80%;
+    margin: 1% 10%;
+    border-bottom: 3.25px solid #3F51B5;
+}
+
+.titulo{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 2.5% 10%;
+}
+
+.espacio{
+    background-color: azure;
+    width: 100%;
+    height: 10px;
+}
+
+.contenedor_asignaturas{
+    margin: 1.25% 10%;
+    width: 80%;
+}
+
+.campo_tipo{
+    margin: 1.25% 10%;
+    width: 80%;
+}
+
+.contenedor_apartado{
+    display: flex;
+    justify-content: space-between;
+    margin: 3.25% 10%;
+    width: 80%;
+    height: fit-content;
+    border-radius: 15px;
+    border: 2px solid #3F51B5;
+    & mat-icon{
+        margin: auto 2%;
+        color: #3F51B5;
+    }
+}
+
+.apartado{
+    padding-top: 1.25%;
+    padding-left: 4%;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.contenedor_boton{
+    width: 55%;
+    margin: auto;
+
+    & .boton_informe{
         width: 100%;
-        height: 40px;
-        background-color: #3F51B5;
     }
+}
 
-    .cabecera{
-        margin-top: 3%;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    }
+.abrir{
+    transition: 0.3s;
+}
 
-    .volver{
-        margin-top: 2%;
-        margin-left: 2%;
-    }
+.cerrar{
+    transform: rotate(45deg);
+    transition: 0.3s;
+    color: coral !important;
+}
 
-    .contenedor_usuario{
-        margin-top: 3%;
-        margin-right: 3%;
-        width: 65%;
-        display: flex;
-        justify-content: space-between;
-    }
+.contenedor{
+    width: 80%;
+    margin: 1.5% 10%;
+}
 
-    .usuario{
-        padding: 3%;
-        border-radius: 15px;
-        border: 2px solid lightgray;
-        background-color: coral !important;
-        width: 100%;
-        height: 20px;
-        color: white;
+.contenedor_campo{
+    width: 100%;
+}
+
+.campo{
+    width: 100%;
+}
+
+.titulo_res{
+    border: 2px solid #3F51B5;
+    width: 80%;
+    height: 10%;
+    border-radius: 15px;
+    margin: 3% 4%;
+    & p{
+        font-size: 15px;
         font-weight: 600;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 4% 4%;
     }
+}
 
-    .linea{
-        width: 80%;
-        margin: 1% 10%;
-        border-bottom: 3.25px solid #3F51B5;
-    }
+.resultados{
+    margin: 3% 4%;
+}
 
-    .titulo{
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 20px;
-        font-weight: bold;
-        margin: 2.5% 10%;
-    }
-
-    .espacio{
-        background-color: azure;
-        width: 100%;
-        height: 10px;
-    }
-
-    .contenedor_asignaturas{
-        margin: 1.25% 10%;
-        width: 80%;
-    }
-
-    .campo_tipo{
-        margin: 1.25% 10%;
-        width: 80%;
-    }
-
-    .contenedor_apartado{
-        display: flex;
-        justify-content: space-between;
-        margin: 3.25% 10%;
-        width: 80%;
-        height: 13%;
-        border-radius: 15px;
-        border: 2px solid #3F51B5;
-        & mat-icon{
-            margin: auto 2%;
-            color: #3F51B5;
-        }
-    }
-
-    .apartado{
-        padding-top: 1.25%;
-        padding-left: 4%;
-        font-size: 16px;
-        font-weight: 600;
-    }
-
-    .contenedor_boton{
-        width: 55%;
-        margin: auto;
-
-        & .boton_informe{
-            width: 100%;
-        }
-    }
-
-    .abrir{
-        transition: 0.3s;
-    }
-
-    .cerrar{
-        transform: rotate(45deg);
-        transition: 0.3s;
-        color: coral !important;
-    }
-
-    .contenedor{
-        width: 80%;
-        margin: 1.5% 10%;
-    }
-
-    .contenedor_campo{
-        width: 100%;
-    }
-
-    .campo{
-        width: 100%;
-    }
-
-    .titulo_res{
-        border: 2px solid #3F51B5;
-        width: 80%;
-        height: 10%;
-        border-radius: 15px;
-        margin: 3% 4%;
-        & p{
-            font-size: 15px;
-            font-weight: 600;
-            margin: 4% 4%;
-        }
-    }
-
-    .resultados{
-        margin: 3% 4%;
-    }
-
-    .campo_obs{
-        width: 100%;
-        & textarea{
-            height: 285px;
-        }
+.campo_obs{
+    width: 100%;
+    & textarea{
+        height: 285px;
     }
 }

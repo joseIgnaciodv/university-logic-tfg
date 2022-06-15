@@ -1,42 +1,56 @@
-<div class="barra_movil"></div>
+<div *ngIf="cargando" class="contenedor_spinner">
+    <mat-progress-spinner class="spinner" mode="indeterminate"></mat-progress-spinner>
+    <span>Cargando . . .</span>
+</div>
 
-<div class="vista_login">
-    <div class="imagen_inicio">
-        <img src="assets/images/uem.svg" alt="">
-    </div>
-    
-    <div class="campo">
-        <mat-form-field appearance="outline" class="contenedor_campo">
-            <mat-icon matPrefix>person</mat-icon>
-            <mat-label>Nombre Usuario</mat-label>
-            <input matInput type="email" value="{{correo}}">
-        </mat-form-field>
-    </div>
-    
-    <div class="campo">
-        <mat-form-field appearance="outline" class="contenedor_campo">
-            <mat-icon matPrefix>lock</mat-icon>
-            <mat-label>Contraseña</mat-label>
-            <input matInput type="password" value="{{password}}">
-        </mat-form-field>
-    </div>
-    
-    <div class="contendor_boton">
-        <button mat-raised-button color="primary" class="boton">Login</button>
-    </div>
-    
-    <div class="separador">
-        <hr class="linea">
-        <mat-icon>arrow_drop_down</mat-icon>
-        <hr class="linea">
-    </div>
-    
-    <div class="microsoft_login" matRipple centered="True" (click)="sign_in()">
-        <div class="microsoft_logo">
-            <img src="assets/images/ms.svg" alt="">
+<div *ngIf="!cargando">
+    <div class="barra_movil"></div>
+
+    <div class="vista_login">
+        <div class="imagen_inicio">
+            <img src="assets/images/uem.svg" alt="">
         </div>
-        <div class="texto_microsoft">
-            <span class="texto">Registrar Cuenta</span>
+        
+        <div class="campo">
+            <mat-form-field appearance="outline" class="contenedor_campo">
+                <mat-icon matPrefix>person</mat-icon>
+                <mat-label>Nombre Usuario</mat-label>
+                <input matInput type="email" [(ngModel)]="correo">
+            </mat-form-field>
+        </div>
+        
+        <div class="campo">
+            <mat-form-field appearance="outline" class="contenedor_campo">
+                <mat-icon matPrefix>lock</mat-icon>
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" [(ngModel)]="password">
+            </mat-form-field>
+        </div>
+    
+        <div class="contenedor_perfil">
+            <mat-radio-group class="grupo_perfil" [(ngModel)]="perfil">
+                <mat-radio-button value="Profesor">Profesor</mat-radio-button>
+                <mat-radio-button value="Coordinador">Coordinador</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        
+        <div class="contendor_boton">
+            <button mat-raised-button color="primary" class="boton" (click)="validar_usuario()">Login</button>
+        </div>
+        
+        <div class="separador">
+            <hr class="linea">
+            <mat-icon>arrow_drop_down</mat-icon>
+            <hr class="linea">
+        </div>
+        
+        <div class="microsoft_login" matRipple centered="True">  <!-- (click)="sign_in()" -->
+            <div class="microsoft_logo">
+                <img src="assets/images/ms.svg" alt="">
+            </div>
+            <div class="texto_microsoft">
+                <span class="texto">Registrar Cuenta</span>
+            </div>
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 export interface Usuario {
-    uid:string,
-    correo:string,
-    nombre:string,
-    tipo:string
+    cod_profes:string,
+    dir_mail:string,
+    profesor:string,
+    tipo:string,
 }

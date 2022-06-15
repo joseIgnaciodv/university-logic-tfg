@@ -1,0 +1,22 @@
+<div mat-dialog-content class="dialogo">
+    <mat-icon class="cerrar" (click)="cerrar_mensaje()">close</mat-icon>
+
+    <div class="contenedor_info">
+        <mat-icon class="info">info</mat-icon>
+    </div>
+
+    <div class="contenedor_mensaje">
+        <span>Desea cerrar sesión</span>
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <button class="boton_cancelar" mat-button (click)="cerrar_mensaje()">
+        <mat-icon>close</mat-icon>
+        Cancelar
+    </button>
+    <button class="boton_ok" mat-button (click)="confirmar_cerrar()">
+        <mat-icon>check_circle</mat-icon>
+        Ok
+    </button>
+</div>

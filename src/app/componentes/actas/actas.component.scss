@@ -1,75 +1,73 @@
-@media only screen and (max-width: 600px){
+// .barra_movil{
+//     width: 100%;
+//     height: 40px;
+//     background-color: #3F51B5;
+//     position: fixed;
+// }
 
-    .barra_movil{
-        width: 100%;
-        height: 40px;
-        background-color: #3F51B5;
-    }
-
-    #volver{
-        margin: 1.5% 5%;
-    }
+#volver{
+    margin: 1.5% 5%;
+}
 
 
-    .linea{
-        width: 80%;
-        margin: 1% 10%;
-        border-bottom: 3.25px solid #3F51B5;
-    }
+.linea{
+    width: 80%;
+    margin: 1% 10%;
+    border-bottom: 3.25px solid #3F51B5;
+}
 
-    .titulo{
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 20px;
-        font-weight: bold;
-        margin: 0 10%;
-    }
+.titulo{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 10%;
+}
 
-    .espacio{
-        background-color: azure;
-        width: 100%;
-        height: 10px;
-    }
+.espacio{
+    background-color: azure;
+    width: 100%;
+    height: 10px;
+}
 
-    .contenedor_asignatura{
-        margin: 1.5% 10%;
-        width: 80%;
-    }
+.contenedor_asignatura{
+    margin: 1.5% 10%;
+    width: 80%;
+}
 
-    .contenedor_tipo{
-        margin: 1.5% 10%;
-        width: 80%;
-    }
+.contenedor_tipo{
+    margin: 1.5% 10%;
+    width: 80%;
+}
 
-    .contenedor_titulo{
-        margin: 1.5% 10%;
-        width: 80%;
-    }
+.contenedor_titulo{
+    margin: 1.5% 10%;
+    width: 80%;
+}
 
-    .contenedor_subTitulo{
-        margin: 1.5% 10%;
-        width: 80%;
-    }
+.contenedor_subTitulo{
+    margin: 1.5% 10%;
+    width: 80%;
+}
 
-    .contenedor_fecha{
-        margin: 1.5% 10%;
-        width: 80%;
-    }
+.contenedor_fecha{
+    margin: 1.5% 10%;
+    width: 80%;
+}
 
-    .contenedor_hora{
-        margin: 1.5% 10%;
-        width: 80%;
-    }
+.contenedor_hora{
+    margin: 1.5% 10%;
+    width: 80%;
+}
 
-    .contenedor_boton{
-        margin: 2% 17%;
-        width: 65%;
-    }
+.contenedor_boton{
+    margin: 2% 17%;
+    width: 65%;
+}
 
-    .contenedor_campo{
-        width: 100%;
-    }
+.contenedor_campo{
+    width: 100%;
+}
 
-    .boton_acta{
-        width: 100%;
-    }
+.boton_acta{
+    width: 100%;
 }

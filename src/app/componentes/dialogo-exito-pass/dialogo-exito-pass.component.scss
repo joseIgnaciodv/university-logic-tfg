@@ -1,0 +1,43 @@
+.dialogo{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 200px;
+    height: 175px;
+}
+
+.cerrar{
+    position: absolute;
+    right: 0;
+    margin-right: 1.5%;
+}
+
+.contenedor_info{
+    display: flex;
+    margin: 20% auto 10% auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.info{
+    margin-top: 6%;
+    transform: scale(3);
+    color: lightblue !important;
+}
+
+.contenedor_boton{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+
+    & span{
+        margin: 3%;
+        color: black;
+        font-weight: 500;
+        font-size: 16px;
+    }
+}

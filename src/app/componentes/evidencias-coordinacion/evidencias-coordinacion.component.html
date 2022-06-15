@@ -1,19 +1,63 @@
-<h2 class="titulo">Evidencias de Coordinación</h2>
-  
-<div class="linea"></div>
+<div class="barra_movil"></div>
 
-<div class="contenedor" matRipple centered="True" (click)="navegar_actas()">
-    <div class="tipo">
-        <span>Actas</span>
-    </div>
-    <img class="actas" src="assets/images/check-list.png" alt="Lista de tareas icono">
+<div *ngIf="cargando" class="contenedor_spinner">
+    <mat-progress-spinner class="spinner" mode="indeterminate"></mat-progress-spinner>
+    <span>Cargando . . .</span>
 </div>
 
-<div class="contenedor" matRipple centered="True" (click)="navegar_informes()">
-    <div class="tipo">
-        <span>Informes</span>
-    </div>
-    <img src="assets/images/seo-report.png" alt="Informe">
-</div>
+<mat-drawer-container>
+    <mat-drawer class="side_nav" #drawer mode="push" position="end">
+        <mat-nav-list>
+            <a mat-list-item>
+                <div class="cerrar_sideNav">
+                    <mat-icon (click)="drawer.toggle()">close</mat-icon>
+                </div>
+            </a>
+            <a mat-list-item [routerLink]="['/perfil_coordinador', usuario]">
+                <mat-icon>person</mat-icon>
+                Mi Perfil
+            </a>
+            <a mat-list-item (click)="cerrar_sesion(drawer)">
+                <mat-icon>exit_to_app</mat-icon>
+                Cerrar Sesion
+            </a>
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div *ngIf="!cargando">
+            <div class="cabecera">
+                <div>.</div>
+                <div class="contenido_cabecera">
+                    <div class="nombre_usuario">
+                        <input type="text" id="usuario" class="usuario" value={{usuario}} disabled>
+                    </div>
+                    <button mat-mini-fab class="icono_usuario" color="default" (click)="drawer.toggle()">
+                        <mat-icon>person</mat-icon>
+                    </button>
+                </div>
+            </div>
 
-<app-navegacion-coordinador></app-navegacion-coordinador>
+            <h2 class="titulo">Evidencias de Coordinación</h2>
+
+            <div class="linea"></div>
+
+            <div class="contenedor" matRipple centered="True" (click)="navegar_actas()">
+                <div class="tipo">
+                    <span>Actas</span>
+                </div>
+                <img class="actas" src="assets/images/check-list.png" alt="Lista de tareas icono">
+            </div>
+
+            <div class="contenedor" matRipple centered="True" (click)="navegar_informes()">
+                <div class="tipo">
+                    <span>Informes</span>
+                </div>
+                <img src="assets/images/seo-report.png" alt="Informe">
+            </div>
+
+            <div class="espacio"></div>
+
+            <app-navegacion-coordinador></app-navegacion-coordinador>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,38 @@
+<div *ngIf="cargando" class="contenedor_spinner">
+    <mat-progress-spinner class="spinner" mode="indeterminate"></mat-progress-spinner>
+    <span>Cargando . . .</span>
+</div>
+
+<div *ngIf="!cargando">
+    <div class="titulo">
+        <span>Codigo QR generado</span>
+    </div>
+    
+    
+    
+    <div class="contenedor_url">
+        <div class="contenedor_titulo">
+            <span class="titulo_url">URL del Codigo QR:</span>
+        
+            <div class="boton_copiar">
+                <mat-icon id="icono" [ngClass]="{'pulsado': pulsado, 'no_pulsado': !pulsado}" #toolTip="matTooltip" matTooltip="URL copiada" matTooltipPosition="after" (click)="copiar_url(toolTip); toolTip.show()">file_copy</mat-icon>
+            </div>        
+        </div>
+    
+        <textarea class="url">{{url_qr}}</textarea>
+    </div>
+    
+    <div class="contenedor_qr">
+        <img [src]="imagen" alt="Codigo QR">
+    </div>
+    
+    <div class="botones">
+        <button mat-raised-button color="primary" (click)="descargar_qr()">
+            Descargar QR
+        </button>
+    
+        <button id="boton_volver" mat-raised-button [routerLink]="['/clases', profesor]">Volver</button>
+    </div>
+
+    <div class="espacio"></div>
+</div>

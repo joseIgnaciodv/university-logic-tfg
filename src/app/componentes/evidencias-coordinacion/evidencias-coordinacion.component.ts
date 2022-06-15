@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDrawer } from '@angular/material/sidenav';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DialogoCerrarComponent } from '../dialogo-cerrar/dialogo-cerrar.component';
 
 @Component({
   selector: 'app-evidencias-coordinacion',
@@ -8,8 +11,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EvidenciasCoordinacionComponent implements OnInit {
   usuario: string = "";
+  cargando: boolean = true;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private dialogo: MatDialog) { }
+
+  cerrar_sesion(drawer: MatDrawer){
+    drawer.toggle();
+    this.dialogo.open(DialogoCerrarComponent);
+  }
 
   navegar_informes(){
     let url = "/informes/" + this.usuario;
@@ -23,6 +32,7 @@ export class EvidenciasCoordinacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuario = this.route.snapshot.params['usuario']
+    this.cargando = false;
   }
 
 }

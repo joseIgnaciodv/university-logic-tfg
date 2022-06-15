@@ -1,149 +1,91 @@
-@media only screen and (max-width: 600px){
+.contenedor_spinner{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 50%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
 
-    .barra_movil{
+.vista_login{
+    position: fixed;
+    width: 100%;
+}
+.imagen_inicio{
+    width: 60%;
+    margin: 20% 20% 8% 20%;
+    height: auto;
+    & img{
         width: 100%;
-        height: 40px;
+    }
+}
+.campo{
+    width: 60%;
+    margin: 3% 20%;
+
+}
+.contenedor_campo{
+    width: 100%;
+}
+
+.contenedor_perfil{
+    width: 60%;
+    margin: 0 20% 6% 20%;
+}
+
+.grupo_perfil{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contendor_boton{
+    width: 60%;
+    margin: auto;
+}
+
+.boton{
+    width: 100%;
+    font-size: 4.5vw;
+}
+
+.separador{
+    margin: 5% 20%;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    & .linea{
         background-color: #3F51B5;
-    }
-
-    .vista_login{
+        height: 0.5px;
         width: 100%;
     }
-    .imagen_inicio{
-        width: 60%;
-        margin: 10% 20%;
-        height: auto;
-        & img{
-            width: 100%;
-        }
-    }
-    .campo{
-        width: 60%;
-        margin: 5% 20%;
-
-    }
-    .contenedor_campo{
-        width: 100%;
-    }
-
-    .contendor_boton{
-        width: 60%;
-        margin: auto;
-    }
-
-    .boton{
-        width: 100%;
-        font-size: 4.5vw;
-    }
-
-    .separador{
-        margin: 10% 20%;
-        width: 60%;
-        display: flex;
-        justify-content: space-between;
-        & .linea{
-            background-color: #3F51B5;
-            height: 0.5px;
-            width: 100%;
-        }
-    }
-
-    .microsoft_login{
-        border: 1px solid #8C8C8C;
-        display: flex;
-        width: 60%;
-        height: 41px;
-        margin: 10% 20%;
-    }
-
-    .microsoft_logo{
-        margin: 10px 12px;
-    }
-
-    .texto_microsoft{
-        margin: 10px 12px;
-        & .texto{
-            font-weight: 600;
-            font-size: 15px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #5E5E5E;
-        }
-    }
-
 }
 
-@media only screen and (min-width: 992px) {
+.microsoft_login{
+    border: 1px solid #8C8C8C;
+    display: flex;
+    width: 60%;
+    height: 41px;
+    margin: 5% 20%;
+}
 
-    .barra_movil{
-        display: none;
-    }
+.microsoft_logo{
+    margin: 10px 12px;
+}
 
-    .vista_login{
-        border: 2.25px solid darkgray;
-        border-radius: 10px;
-        margin: 5% 20%;
-        width: 55%;
-        height: 80%;
-    }
-
-    .imagen_inicio{
-        margin: 3% 23%;
-    }
-
-    .campo{
-        width: 60%;
-        margin: 1% 21%;
-    }
-
-    .contenedor_campo{
-        width: 100%;
-    }
-
-    .contendor_boton{
-        width: 50%;
-        margin: auto;
-    }
-
-    .boton{
-        width: 100%;
-        font-size: 16px;
-    }
-
-    .separador{
-        margin: 2.5% 20%;
-        width: 60%;
-        display: flex;
-        justify-content: space-between;
-        & .linea{
-            background-color: #3F51B5;
-            height: 0.5px;
-            width: 100%;
-        }
-    }
-
-    .microsoft_login{
-        border: 1px solid #8C8C8C;
-        display: flex;
-        justify-content: center;
-        width: 60%;
-        height: 41px;
-        margin: 2.3% 20%;
-        &:hover{
-            cursor: pointer;
-        }
-    }
-
-    .microsoft_logo{
-        margin: 10px 12px;
-    }
-
-    .texto_microsoft{
-        margin: 10px 12px;
-        & .texto{
-            font-weight: 600;
-            font-size: 15px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #5E5E5E;
-        }
+.texto_microsoft{
+    margin: 10px 12px;
+    & .texto{
+        font-weight: 600;
+        font-size: 15px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #5E5E5E;
     }
 }
+

@@ -1,249 +1,289 @@
 <div class="barra_movil"></div>
 
-<div class="cabecera">
-  <button class="volver" mat-fab color="primary" [routerLink]="['/evidencias_coordinacion', usuario]">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-  
-  <div class="contenedor_usuario">
-    <div class="nombre_usuario">
-      <input type="text" id="usuario" class="usuario" value={{usuario}}>
-    </div>
-    <button mat-mini-fab class="icono_usuario" color="default">
-      <mat-icon>person</mat-icon>
-    </button>
-  </div>
-</div>
-  
-<h2 class="titulo">Informes Evaluación de Resultados de Aprendizaje</h2>
-
-<div class="linea"></div>
-
-<div class="espacio"></div>
-
-<mat-form-field class="contenedor_asignaturas" appearance="outline">
-    <mat-label>Asignatura</mat-label>
-    <mat-select [(ngModel)]="asignatura">
-      <mat-option (click)="get_info_asignatura(asignatura)" *ngFor="let asignatura of asignaturas" value="{{asignatura}}">
-        {{asignatura}}
-      </mat-option>
-    </mat-select>
-</mat-form-field>
-
-<mat-form-field appearance="outline" class="campo_tipo">
-    <mat-label>Tipo</mat-label>
-    <input matInput disabled value={{tipo}}>
-</mat-form-field>
-
-<mat-form-field appearance="outline" class="campo_tipo">
-    <mat-label>Fecha</mat-label>
-    <input matInput disabled value="{{fecha | date: 'dd/MM/yyyy'}}">
-</mat-form-field>
-
-<div class="contenedor_apartado">
-    <h2 class="apartado">Plan Institucional de Evaluación de Aprendizajes</h2>
-    <mat-icon (click)="toggle_piea = !toggle_piea" [ngClass] = "{'abrir': !toggle_piea, 'cerrar': toggle_piea}">add_circle</mat-icon>
+<div *ngIf="cargando" class="contenedor_spinner">
+    <mat-progress-spinner class="spinner" mode="indeterminate"></mat-progress-spinner>
+    <span>Cargando . . .</span>
 </div>
 
-<div class="contenedor" *ngIf="toggle_piea">
-    <div class="contenedor_campo">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>Asignatura/Modulo</mat-label>
-            <input matInput value="{{asignatura}}">
-        </mat-form-field>
-    </div>
-    <div class="contenedor_campo">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>Titulación</mat-label>
-            <input matInput value="{{titulacion}}">
-        </mat-form-field>
-    </div>
-    <div class="contenedor_campo">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>Curso</mat-label>
-            <input matInput value="{{curso}}">
-        </mat-form-field>
-    </div>
-    <div class="contenedor_campo">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>Semestre</mat-label>
-            <input matInput value="{{semestre}}">
-        </mat-form-field>
-    </div>
-    <div class="contenedor_campo">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>Escuela/Facultad</mat-label>
-            <input matInput value="{{escuela}}">
-        </mat-form-field>
-    </div>
-</div>
+<mat-drawer-container>
+    <mat-drawer class="side_nav" #drawer mode="push" position="end">
+        <mat-nav-list>
+            <a mat-list-item>
+                <div class="cerrar_sideNav">
+                    <mat-icon (click)="drawer.toggle()">close</mat-icon>
+                </div>
+            </a>
+            <a mat-list-item [routerLink]="['/perfil_coordinador', usuario]">
+                <mat-icon>person</mat-icon>
+                Mi Perfil
+            </a>
+            <a mat-list-item (click)="cerrar_sesion(drawer)">
+                <mat-icon>exit_to_app</mat-icon>
+                Cerrar Sesion
+            </a>
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div *ngIf="!cargando">
+            <div class="cabecera">
+                <button class="volver" mat-fab color="primary" [routerLink]="['/evidencias_coordinacion', usuario]">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div class="contenedor_usuario">
+                    <div class="nombre_usuario">
+                        <input type="text" id="usuario" class="usuario" value={{usuario}} disabled>
+                    </div>
+                    <button mat-mini-fab class="icono_usuario" color="default" (click)="drawer.toggle()">
+                        <mat-icon>person</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <h2 class="titulo">Informes Evaluación de Resultados de Aprendizaje</h2>
+
+            <div class="linea"></div>
+
+            <div class="espacio"></div>
+
+            <mat-form-field class="contenedor_asignaturas" appearance="outline">
+                <mat-label>Asignatura</mat-label>
+                <mat-select [(ngModel)]="asignatura">
+                    <mat-option (click)="get_info_asignatura(asignatura)" *ngFor="let asignatura of asignaturas"
+                        value="{{asignatura}}">
+                        {{asignatura}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="campo_tipo">
+                <mat-label>Tipo</mat-label>
+                <input matInput disabled value={{tipo}}>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="campo_tipo">
+                <mat-label>Fecha</mat-label>
+                <input matInput disabled value="{{fecha | date: 'dd/MM/yyyy'}}">
+            </mat-form-field>
+
+            <div class="contenedor_apartado">
+                <h2 class="apartado">Plan Institucional de Evaluación de Aprendizajes</h2>
+                <mat-icon (click)="toggle_piea = !toggle_piea"
+                    [ngClass]="{'abrir': !toggle_piea, 'cerrar': toggle_piea}">
+                    add_circle</mat-icon>
+            </div>
+
+            <div class="contenedor" *ngIf="toggle_piea">
+                <div class="contenedor_campo">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>Asignatura/Modulo</mat-label>
+                        <input matInput value="{{asignatura}}">
+                    </mat-form-field>
+                </div>
+                <div class="contenedor_campo">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>Titulación</mat-label>
+                        <input matInput value="{{titulacion}}">
+                    </mat-form-field>
+                </div>
+                <div class="contenedor_campo">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>Curso</mat-label>
+                        <input matInput value="{{curso}}">
+                    </mat-form-field>
+                </div>
+                <div class="contenedor_campo">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>Semestre</mat-label>
+                        <input matInput value="{{semestre}}">
+                    </mat-form-field>
+                </div>
+                <div class="contenedor_campo">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>Escuela/Facultad</mat-label>
+                        <input matInput value="{{escuela}}">
+                    </mat-form-field>
+                </div>
+            </div>
 
 
-<div class="contenedor_apartado">
-    <h2 class="apartado">Informe Evaluación de Resultados de Aprendizaje</h2>
-    <mat-icon (click)="toggle_era = !toggle_era" [ngClass] = "{'abrir': !toggle_era, 'cerrar': toggle_era}">add_circle</mat-icon>
-</div>
+            <div class="contenedor_apartado">
+                <h2 class="apartado">Informe Evaluación de Resultados de Aprendizaje</h2>
+                <mat-icon (click)="toggle_era = !toggle_era" [ngClass]="{'abrir': !toggle_era, 'cerrar': toggle_era}">
+                    add_circle</mat-icon>
+            </div>
 
-<div class="contenedor" *ngIf="toggle_era">
-    <div class="contenedor_campo">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>Asignatura/Modulo</mat-label>
-            <input matInput value="{{asignatura}}">
-        </mat-form-field>
-    </div>
-    <div class="contenedor_campo">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>Titulación</mat-label>
-            <input matInput value="{{titulacion}}">
-        </mat-form-field>
-    </div>
-    <div class="contenedor_campo">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>Coordinador</mat-label>
-            <input matInput value={{usuario}}>
-        </mat-form-field>
-    </div>
-    <div class="contenedor_campo">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>Semestre</mat-label>
-            <input matInput value="{{semestre}}">
-        </mat-form-field>
-    </div>
-    <div class="contenedor_campo">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>Curso</mat-label>
-            <input matInput value="{{curso}}">
-        </mat-form-field>
-    </div>
-    <div class="contenedor_campo">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>ECTS</mat-label>
-            <input matInput [(ngModel)]="ects">
-        </mat-form-field>
-    </div>
-    <div class="contenedor_campo">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>Modalidad</mat-label>
-            <input matInput [(ngModel)]="modalidad">
-        </mat-form-field>
-    </div>
-</div>
+            <div class="contenedor" *ngIf="toggle_era">
+                <div class="contenedor_campo">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>Asignatura/Modulo</mat-label>
+                        <input matInput value="{{asignatura}}">
+                    </mat-form-field>
+                </div>
+                <div class="contenedor_campo">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>Titulación</mat-label>
+                        <input matInput value="{{titulacion}}">
+                    </mat-form-field>
+                </div>
+                <div class="contenedor_campo">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>Coordinador</mat-label>
+                        <input matInput value={{usuario}}>
+                    </mat-form-field>
+                </div>
+                <div class="contenedor_campo">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>Semestre</mat-label>
+                        <input matInput value="{{semestre}}">
+                    </mat-form-field>
+                </div>
+                <div class="contenedor_campo">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>Curso</mat-label>
+                        <input matInput value="{{curso}}">
+                    </mat-form-field>
+                </div>
+                <div class="contenedor_campo">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>ECTS</mat-label>
+                        <input matInput [(ngModel)]="ects">
+                    </mat-form-field>
+                </div>
+                <div class="contenedor_campo">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>Modalidad</mat-label>
+                        <input matInput [(ngModel)]="modalidad">
+                    </mat-form-field>
+                </div>
+            </div>
 
-<div class="contenedor_apartado">
-    <h2 class="apartado">Resultados de Aprendizaje</h2>
-    <mat-icon (click)="toggle_res = !toggle_res" [ngClass] = "{'abrir': !toggle_res, 'cerrar': toggle_res}">add_circle</mat-icon>
-</div>
+            <div class="contenedor_apartado">
+                <h2 class="apartado">Resultados de Aprendizaje</h2>
+                <mat-icon (click)="toggle_res = !toggle_res" [ngClass]="{'abrir': !toggle_res, 'cerrar': toggle_res}">
+                    add_circle</mat-icon>
+            </div>
 
-<div class="contenedor" *ngIf="toggle_res">
-    <div class="titulo_res">
-        <p>Convocatoria Ordinaria</p>
-    </div>
+            <div class="contenedor" *ngIf="toggle_res">
+                <div class="titulo_res">
+                    <p>Convocatoria Ordinaria</p>
+                </div>
 
-    <div class="resultados">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>Total Matriculados</mat-label>
-            <input matInput [(ngModel)]="ord_total">
-        </mat-form-field>
+                <div class="resultados">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>Total Matriculados</mat-label>
+                        <input matInput [(ngModel)]="ord_total">
+                    </mat-form-field>
 
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>No.Aprobados</mat-label>
-            <input matInput [(ngModel)]="ord_aprobados">
-        </mat-form-field>
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>No.Aprobados</mat-label>
+                        <input matInput [(ngModel)]="ord_aprobados">
+                    </mat-form-field>
 
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>No.Suspensos</mat-label>
-            <input matInput [(ngModel)]="ord_suspensos">
-        </mat-form-field>
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>No.Suspensos</mat-label>
+                        <input matInput [(ngModel)]="ord_suspensos">
+                    </mat-form-field>
 
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>No.No Presentados</mat-label>
-            <input matInput [(ngModel)]="ord_no_presentados">
-        </mat-form-field>
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>No.No Presentados</mat-label>
+                        <input matInput [(ngModel)]="ord_no_presentados">
+                    </mat-form-field>
 
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>No.Sobresalientes</mat-label>
-            <input matInput [(ngModel)]="ord_sobresalientes">
-        </mat-form-field>
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>No.Sobresalientes</mat-label>
+                        <input matInput [(ngModel)]="ord_sobresalientes">
+                    </mat-form-field>
 
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>No.Notables</mat-label>
-            <input matInput [(ngModel)]="ord_notables">
-        </mat-form-field>
-    </div>
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>No.Notables</mat-label>
+                        <input matInput [(ngModel)]="ord_notables">
+                    </mat-form-field>
+                </div>
 
-    <div class="titulo_res">
-        <p>Convocatoria Extraordinaria</p>
-    </div>
+                <div class="titulo_res">
+                    <p>Convocatoria Extraordinaria</p>
+                </div>
 
-    <div class="resultados">
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>Total Matriculados</mat-label>
-            <input matInput [(ngModel)]="ext_total">
-        </mat-form-field>
+                <div class="resultados">
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>Total Matriculados</mat-label>
+                        <input matInput [(ngModel)]="ext_total">
+                    </mat-form-field>
 
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>No.Aprobados</mat-label>
-            <input matInput [(ngModel)]="ext_aprobados">
-        </mat-form-field>
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>No.Aprobados</mat-label>
+                        <input matInput [(ngModel)]="ext_aprobados">
+                    </mat-form-field>
 
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>No.Suspensos</mat-label>
-            <input matInput [(ngModel)]="ext_suspensos">
-        </mat-form-field>
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>No.Suspensos</mat-label>
+                        <input matInput [(ngModel)]="ext_suspensos">
+                    </mat-form-field>
 
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>No.No Presentados</mat-label>
-            <input matInput [(ngModel)]="ext_no_presentados">
-        </mat-form-field>
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>No.No Presentados</mat-label>
+                        <input matInput [(ngModel)]="ext_no_presentados">
+                    </mat-form-field>
 
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>No.Sobresalientes</mat-label>
-            <input matInput [(ngModel)]="ext_sobresalientes">
-        </mat-form-field>
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>No.Sobresalientes</mat-label>
+                        <input matInput [(ngModel)]="ext_sobresalientes">
+                    </mat-form-field>
 
-        <mat-form-field appearance="outline" class="campo">
-            <mat-label>No.Notables</mat-label>
-            <input matInput [(ngModel)]="ext_notables">
-        </mat-form-field>
-    </div>
-</div>
+                    <mat-form-field appearance="outline" class="campo">
+                        <mat-label>No.Notables</mat-label>
+                        <input matInput [(ngModel)]="ext_notables">
+                    </mat-form-field>
+                </div>
+            </div>
 
-<div class="contenedor_apartado">
-    <h2 class="apartado">Observaciones</h2>
-    <mat-icon (click)="toggle_obs = !toggle_obs" [ngClass] = "{'abrir': !toggle_obs, 'cerrar': toggle_obs}">add_circle</mat-icon>
-</div>
- 
-<div class="contenedor" *ngIf="toggle_obs">
-    <span>Indica qué dificultades en el grupo en relación con el aprendizaje de los estudiantes:</span>
-    <mat-form-field class="campo_obs" appearance="outline">
-        <textarea matInput [(ngModel)]="obs1"></textarea>
-    </mat-form-field>
+            <div class="contenedor_apartado">
+                <h2 class="apartado">Observaciones</h2>
+                <mat-icon (click)="toggle_obs = !toggle_obs" [ngClass]="{'abrir': !toggle_obs, 'cerrar': toggle_obs}">
+                    add_circle</mat-icon>
+            </div>
 
-    <span>Indica en qué medida las actividades evaluables contribuyen a la consecución de los resultados de aprendizaje:</span>
-    <mat-form-field class="campo_obs" appearance="outline">
-        <textarea matInput [(ngModel)]="obs2"></textarea>
-    </mat-form-field>
+            <div class="contenedor" *ngIf="toggle_obs">
+                <span>Indica qué dificultades en el grupo en relación con el aprendizaje de los estudiantes:</span>
+                <mat-form-field class="campo_obs" appearance="outline">
+                    <textarea matInput [(ngModel)]="obs1"></textarea>
+                </mat-form-field>
 
-    <span>Indica en qué medida la metodología docente y las actividades formativas recogidas en la Guía de aprendizaje contribuyen a la consecución de los resultados de aprendizaje:</span>
-    <mat-form-field class="campo_obs" appearance="outline">
-        <textarea matInput [(ngModel)]="obs3"></textarea>
-    </mat-form-field>
+                <span>Indica en qué medida las actividades evaluables contribuyen a la consecución de los resultados de
+                    aprendizaje:</span>
+                <mat-form-field class="campo_obs" appearance="outline">
+                    <textarea matInput [(ngModel)]="obs2"></textarea>
+                </mat-form-field>
 
-    <span>Indica cómo has articulado el feedback formativo y su repercusión en el proceso de enseñanza aprendizaje:</span>
-    <mat-form-field class="campo_obs" appearance="outline">
-        <textarea matInput [(ngModel)]="obs4"></textarea>
-    </mat-form-field>
-</div>
+                <span>Indica en qué medida la metodología docente y las actividades formativas recogidas en la Guía de
+                    aprendizaje contribuyen a la consecución de los resultados de aprendizaje:</span>
+                <mat-form-field class="campo_obs" appearance="outline">
+                    <textarea matInput [(ngModel)]="obs3"></textarea>
+                </mat-form-field>
 
-<div class="contenedor_apartado">
-    <h2 class="apartado">Plan de Mejora</h2>
-    <mat-icon (click)="toggle_plan = !toggle_plan" [ngClass] = "{'abrir': !toggle_plan, 'cerrar': toggle_plan}">add_circle</mat-icon>
-</div>
+                <span>Indica cómo has articulado el feedback formativo y su repercusión en el proceso de enseñanza
+                    aprendizaje:</span>
+                <mat-form-field class="campo_obs" appearance="outline">
+                    <textarea matInput [(ngModel)]="obs4"></textarea>
+                </mat-form-field>
+            </div>
 
-<div *ngIf="toggle_plan">
-    
-</div>
+            <div class="contenedor_apartado">
+                <h2 class="apartado">Plan de Mejora</h2>
+                <mat-icon (click)="toggle_plan = !toggle_plan"
+                    [ngClass]="{'abrir': !toggle_plan, 'cerrar': toggle_plan}">
+                    add_circle</mat-icon>
+            </div>
 
-<div class="contenedor_boton">
-    <button class="boton_informe" mat-raised-button color="primary" (click)="generar_informe()">Generar Informe</button>
-</div>
+            <div *ngIf="toggle_plan">
+
+            </div>
+
+            <div class="contenedor_boton">
+                <button class="boton_informe" mat-raised-button color="primary" (click)="generar_informe()">Generar
+                    Informe</button>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

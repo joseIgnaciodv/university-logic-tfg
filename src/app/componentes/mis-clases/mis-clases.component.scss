@@ -1,145 +1,184 @@
-@media only screen and (max-width: 600px){
+// .barra_movil{
+//     z-index: 1;
+//     width: 100%;
+//     height: 40px;
+//     background-color: #3F51B5;
+//     position: fixed;
+//     top: 0;
+// }
 
-    .barra_movil{
-        width: 100%;
-        height: 40px;
-        background-color: #3F51B5;
-    }
+.contenedor_spinner{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 50%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
 
-    .cargando{
-        z-index: 99;
-        background-color: black;
-        opacity: 0.8;
-        right: 50%;
-        top: 50%;
-    }
+.cargando{
+    z-index: 99;
+    background-color: black;
+    opacity: 0.8;
+    right: 50%;
+    top: 50%;
+}
 
-    .cabecera{
-        margin-top: 3%;
-        width: 100%;
-        display: flex;
-        justify-content: right;
-    }
+.cabecera{
+    margin-top: 4%;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
 
-    .nombre_usuario{
-        margin-top: 3%;
-        margin-right: 3%;
-    }
+.nombre_usuario{
+    margin-top: 3%;
+    margin-right: 3%;
+}
 
-    .icono_usuario{
-        margin: 3% 2.5%;
-    }
+.icono_usuario{
+    margin: 3% 2.25%;
+}
 
-    .usuario{
-        padding: 3%;
-        border-radius: 15px;
-        border: 2px solid lightgray;
-        background-color: coral !important;
-        width: 180px;
-        height: 20px;
-        color: white;
-        font-weight: 600;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+.usuario{
+    padding: 3%;
+    border-radius: 15px;
+    border: 2px solid lightgray;
+    background-color: coral !important;
+    width: fit-content;
+    height: 20px;
+    color: white;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    .titulo{
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 20px;
-        font-weight: bold;
-        margin: 0 10%;
-    }
+.titulo{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 10%;
+}
 
-    .linea{
-        width: 80%;
-        margin: 1% 10%;
-        border-bottom: 3.25px solid #3F51B5;
-    }
-    
-    .clase{
-        box-shadow: 10px 10px 5px darkgray;
-        border: 2px solid #3F51B5;
-        display: flex;
-        flex-direction: column;
-        margin: 7% 10%;
-        width: 80%;
-        height: 23%;
-        background-color: lightgray;
-        border-radius: 10px;
-    }
+.linea{
+    width: 80%;
+    margin: 1% 10%;
+    border-bottom: 3.25px solid #3F51B5;
+}
 
-    .nombre_clase{
-        font-size: 16px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin-left: 4%;
-        margin-top: 3%;
-        font-weight: 700;
-    }
+.clase{
+    box-shadow: 10px 10px 5px darkgray;
+    border: 2px solid #3F51B5;
+    display: flex;
+    flex-direction: column;
+    margin: 7% 10%;
+    width: 80%;
+    height: fit-content;
+    background-color: lightgray;
+    border-radius: 10px;
+}
 
-    .semestre1{
-        background-color: yellowgreen !important;
-    }
+.nombre_clase{
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 4%;
+    margin-top: 3%;
+    font-weight: 700;
+}
 
-    .semestre2{
-        background-color: orangered !important;
-    }
+.semestre1{
+    background-color: yellowgreen !important;
+}
 
-    .curso1{
-        background-color: palevioletred !important;
-    }
+.semestre2{
+    background-color: orangered !important;
+}
 
-    .curso2{
-        background-color: crimson !important;
-    }
+.curso1{
+    background-color: palevioletred !important;
+}
 
-    .curso3{
-        background-color: darkgoldenrod !important;
-    }
+.curso2{
+    background-color: crimson !important;
+}
 
-    .curso4{
-        background-color: indigo !important;
-    }
+.curso3{
+    background-color: darkgoldenrod !important;
+}
 
-    .contenedor{
-        margin-top: 5%;
-        margin-left: 4%;
-        display: flex;
-        justify-content: space-between;
-    }
+.curso4{
+    background-color: indigo !important;
+}
 
-    .contenedor_grupo{
-        display: flex;
-        margin-top: 6%;
-        margin-right: 4%;
-        justify-content: right;
-        & span{
-            margin: auto 2.5% auto 0;
-            font-size: 15px;
-            font-weight: 500;
-        }
-    }
+.contenedor{
+    margin-top: 5%;
+    margin-left: 4%;
+    display: flex;
+    justify-content: space-between;
+}
 
-    .contenedor_semestre{
-        display: flex;
-        & span{
-            margin: auto 3.25% auto 0;
-            font-size: 15px;
-            font-weight: 500;
-        }
+.contenedor_grupo{
+    display: flex;
+    margin-top: 8%;
+    margin-right: 4%;
+    margin-bottom: 3%;
+    justify-content: space-between;
+    & span{
+        margin: auto 2.5% auto 0;
+        font-size: 15px;
+        font-weight: 500;
     }
+}
 
-    .contenedor_curso{
-        display: flex;
-        margin-right: 4%;
-        & span{
-            margin: auto 3.25% auto 0;
-            font-size: 15px;
-            font-weight: 500;
-        }
+.contenedor_semestre{
+    display: flex;
+    & span{
+        margin: auto 3.25% auto 0;
+        font-size: 15px;
+        font-weight: 500;
     }
+}
 
-    .espacio{
-        background-color: azure;
-        width: 100%;
-        height: 50px;
+.contenedor_curso{
+    display: flex;
+    margin-right: 4%;
+    & span{
+        margin: auto 3.25% auto 0;
+        font-size: 15px;
+        font-weight: 500;
     }
+}
+
+.espacio{
+    background-color: azure;
+    width: 100%;
+    height: 50px;
+}
+
+.cerrar_sideNav{
+    position: absolute;
+    right: 0;
+    margin-right: 3%;
+}
+
+mat-nav-list a mat-icon{
+    color: #3F51B5 !important;
+}
+
+mat-drawer-content{
+    background-color: azure;
+}
+
+.grupo{
+    display: flex;
+}
+
+.contenido_cabecera{
+    display: flex;
+    margin-right: 6%;
 }
